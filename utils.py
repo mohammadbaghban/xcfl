@@ -27,8 +27,8 @@ def calculate_outputs_and_gradients(inputs, model, target_label_idx, cuda=False)
     return gradients, target_label_idx
 
 def pre_processing(obs, cuda):
-    mean = np.array([0.485, 0.456]).reshape([1, 1, 3])
-    std = np.array([0.229, 0.224]).reshape([1, 1, 3])
+    mean = np.array([0.485, 0.456, 0.406]).reshape([1, 3])
+    std = np.array([0.229, 0.224, 0.225]).reshape([1, 3])
     obs = obs / 255
     obs = (obs - mean) / std
     obs = np.transpose(obs, (2, 0, 1))
